@@ -50,6 +50,8 @@ public class MuiscPlayerMain extends Activity {
         return true;
     }
 
+    //part one finish
+
      public void getSongList() {
         //retrieve song info
         ContentResolver musicResolver = getContentResolver();

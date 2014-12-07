@@ -16,6 +16,7 @@ import android.widget.BaseAdapter;
  */
 public class SongAdapter extends BaseAdapter {
 
+    //Media player 
     private ArrayList<Song> songs;
     private LayoutInflater songInf;
 
