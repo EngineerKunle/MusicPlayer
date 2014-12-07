@@ -1,17 +1,34 @@
 package musicplayer.example.com.musicplayer;
 
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+
+
+
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.content.ContentResolver;
+import android.database.Cursor;
+import android.widget.ListView;
+import android.net.Uri;
 
 
 public class MuiscPlayerMain extends Activity {
+
+    private ArrayList<Song> songList;
+    private ListView songView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_muisc_player_main);
+        songView = (ListView)findViewById(R.id.song_list);
+        songList = new ArrayList<Song>();
     }
 
 
@@ -32,5 +49,9 @@ public class MuiscPlayerMain extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void getSongList() {
+        //retrieve song info
     }
 }
