@@ -1,21 +1,17 @@
 package musicplayer.example.com.musicplayer;
 
 
+import android.app.Activity;
+import android.content.ContentResolver;
+import android.database.Cursor;
+import android.net.Uri;
+import android.os.Bundle;
+import android.view.Menu;
+import android.widget.ListView;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-
-
-
-
-import android.app.Activity;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.content.ContentResolver;
-import android.database.Cursor;
-import android.widget.ListView;
-import android.net.Uri;
 
 
 public class MuiscPlayerMain extends Activity {

@@ -1,22 +1,21 @@
 package musicplayer.example.com.musicplayer;
 
-import java.util.ArrayList;
-
-
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import java.util.ArrayList;
 
 /**
  * Created by Kunle on 07/12/2014.
  */
 public class SongAdapter extends BaseAdapter {
 
-    //Media player 
+    //Media player
     private ArrayList<Song> songs;
     private LayoutInflater songInf;
 
