@@ -1,5 +1,4 @@
-package musicplayer.example.com.musicplayer;
-
+package com.example.kunle.musicplayer;
 
 import android.app.Activity;
 import android.content.ContentResolver;
@@ -14,7 +13,7 @@ import java.util.Collections;
 import java.util.Comparator;
 
 
-public class MuiscPlayerMain extends Activity {
+public class MusicPlayerMain extends Activity {
 
     private ArrayList<Song> songList;
     private ListView songView;
@@ -28,8 +27,8 @@ public class MuiscPlayerMain extends Activity {
         getSongList();
 
         //sorting out the music data
-        Collections.sort(songList, new Comparator<Song>(){
-            public int compare(Song a, Song b){
+        Collections.sort(songList, new Comparator<Song>() {
+            public int compare(Song a, Song b) {
                 return a.getTitle().compareTo(b.getTitle());
             }
         });
@@ -48,7 +47,7 @@ public class MuiscPlayerMain extends Activity {
 
     //part one finish
 
-     public void getSongList() {
+    public void getSongList() {
         //retrieve song info
         ContentResolver musicResolver = getContentResolver();
         Uri musicUri = android.provider.MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;

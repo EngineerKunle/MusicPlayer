@@ -1,4 +1,4 @@
-package musicplayer.example.com.musicplayer;
+package com.example.kunle.musicplayer;
 
 import android.content.Context;
 import android.view.LayoutInflater;

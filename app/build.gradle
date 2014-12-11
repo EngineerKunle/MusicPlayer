@@ -1,21 +1,19 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 18
-    buildToolsVersion "18.0.0"
+    compileSdkVersion 21
+    buildToolsVersion "20.0.0"
 
     defaultConfig {
-        applicationId "musicplayer.example.com.musicplayer"
-        minSdkVersion 16
-        targetSdkVersion 18
+        applicationId "com.example.kunle.musicplayer"
+        minSdkVersion 14
+        targetSdkVersion 21
         versionCode 1
         versionName "1.0"
     }
     buildTypes {
         release {
-
-            minifyEnabled false // new version
-
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -23,4 +21,5 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:21.0.3'
 }

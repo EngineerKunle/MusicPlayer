@@ -1,4 +1,4 @@
-package musicplayer.example.com.musicplayer;
+package com.example.kunle.musicplayer;
 
 /**
  * Created by Kunle on 06/12/2014.
