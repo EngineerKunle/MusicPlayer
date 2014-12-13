@@ -34,6 +34,8 @@ public class MusicService extends Service implements MediaPlayer.OnPreparedListe
         //create player
         player = new MediaPlayer();
 
+        initMusicPlayer();
+
     }
 
     public void initMusicPlayer(){
@@ -45,6 +47,12 @@ public class MusicService extends Service implements MediaPlayer.OnPreparedListe
         player.setOnCompletionListener(this);
         player.setOnErrorListener(this);
     }
+
+    public void setList(ArrayList<Song> theSongs){
+        songs=theSongs;
+    }
+
+
 
 
 
@@ -66,5 +74,12 @@ public class MusicService extends Service implements MediaPlayer.OnPreparedListe
     @Override
     public IBinder onBind(Intent intent) {
         return null;
+    }
+
+    public class MusicBinder extends Binder {
+        private final IBinder musicBind = new MusicBinder();
+        MusicService getService() {
+            return MusicService.this;
+        }
     }
 }
