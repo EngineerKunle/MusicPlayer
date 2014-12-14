@@ -1,4 +1,4 @@
-package com.example.kunle.musicplayer;
+package musicplayer.example.com.musicplayer;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

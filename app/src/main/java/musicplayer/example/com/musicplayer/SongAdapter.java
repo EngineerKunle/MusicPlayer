@@ -1,4 +1,10 @@
-package com.example.kunle.musicplayer;
+package musicplayer.example.com.musicplayer;
+
+/**
+ * Created by Kunle on 14/12/2014.
+ */
+
+import java.util.ArrayList;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,17 +14,20 @@ import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-
-/**
- * Created by Kunle on 07/12/2014.
+/*
+ * This is demo code to accompany the Mobiletuts+ series:
+ * Android SDK: Creating a Music Player
+ *
+ * Sue Smith - February 2014
  */
+
 public class SongAdapter extends BaseAdapter {
 
-    //Media player
+    //song list and layout
     private ArrayList<Song> songs;
     private LayoutInflater songInf;
 
+    //constructor
     public SongAdapter(Context c, ArrayList<Song> theSongs){
         songs=theSongs;
         songInf=LayoutInflater.from(c);
@@ -26,22 +35,24 @@ public class SongAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return 0;
-    }
-
-    @Override
-    public Object getItem(int i) {
-        return null;
-    }
-
-    @Override
-    public long getItemId(int i) {
         return songs.size();
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {//map to song layout
-        LinearLayout songLay = (LinearLayout)songInf.inflate(R.layout.song, parent, false);
+    public Object getItem(int arg0) {
+        return null;
+    }
+
+    @Override
+    public long getItemId(int arg0) {
+        return 0;
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        //map to song layout
+        LinearLayout songLay = (LinearLayout)songInf.inflate
+                (R.layout.song, parent, false);
         //get title and artist views
         TextView songView = (TextView)songLay.findViewById(R.id.song_title);
         TextView artistView = (TextView)songLay.findViewById(R.id.song_artist);
@@ -54,4 +65,5 @@ public class SongAdapter extends BaseAdapter {
         songLay.setTag(position);
         return songLay;
     }
+
 }

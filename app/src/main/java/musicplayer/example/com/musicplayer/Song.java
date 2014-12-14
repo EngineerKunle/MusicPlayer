@@ -1,7 +1,7 @@
-package com.example.kunle.musicplayer;
+package musicplayer.example.com.musicplayer;
 
 /**
- * Created by Kunle on 06/12/2014.
+ * Created by Kunle on 14/12/2014.
  */
 public class Song {
 
@@ -9,7 +9,7 @@ public class Song {
     private String title;
     private String artist;
 
-    public Song(long songID, String songTitle, String songArtist) {
+    public Song(long songID, String songTitle, String songArtist){
         id=songID;
         title=songTitle;
         artist=songArtist;
@@ -18,4 +18,6 @@ public class Song {
     public long getID(){return id;}
     public String getTitle(){return title;}
     public String getArtist(){return artist;}
+
 }
+
