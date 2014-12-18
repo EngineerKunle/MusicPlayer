@@ -113,6 +113,9 @@ public class MainActivity extends Activity implements MediaPlayerControl{
         //create and set adapter
         SongAdapter songAdt = new SongAdapter(this, songList);
         songView.setAdapter(songAdt);
+
+        //controller
+        setController();
     }
 
     //connect to the service
@@ -199,6 +202,25 @@ public class MainActivity extends Activity implements MediaPlayerControl{
             while (musicCursor.moveToNext());
         }
     }
+
+    private void setController(){
+        controller = new MusicController(this);
+        controller.setPrevNextListeners(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                playNext();
+            }
+        }, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                playPrev();
+            }
+        });
+        controller.setMediaPlayer(this);
+        controller.setAnchorView(findViewById(R.id.song_list));
+        controller.setEnabled(true);
+    }
+
 
     @Override
     protected void onDestroy() {

@@ -115,5 +115,29 @@ public class MusicService extends Service implements
         return false;
     }
 
+    public int getPosn(){
+        return player.getCurrentPosition();
+    }
+
+    public int getDur(){
+        return player.getDuration();
+    }
+
+    public boolean isPng(){
+        return player.isPlaying();
+    }
+
+    public void pausePlayer(){
+        player.pause();
+    }
+
+    public void seek(int posn){
+        player.seekTo(posn);
+    }
+
+    public void go(){
+        player.start();
+    }
+
 
 }
