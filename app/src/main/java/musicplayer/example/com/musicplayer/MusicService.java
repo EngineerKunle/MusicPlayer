@@ -139,5 +139,20 @@ public class MusicService extends Service implements
         player.start();
     }
 
+    //skip to previous track
+    public void playPrev(){
+        songPosn--;
+        if(songPosn<0) songPosn=songs.size()-1;
+        playSong();
+    }
+
+    //skip to next
+    public void playNext(){
+        songPosn++;
+        if(songPosn>=songs.size()) songPosn=0;
+        playSong();
+    }
+
+
 
 }

@@ -204,6 +204,7 @@ public class MainActivity extends Activity implements MediaPlayerControl{
     }
 
     private void setController(){
+
         controller = new MusicController(this);
         controller.setPrevNextListeners(new View.OnClickListener() {
             @Override
@@ -219,6 +220,7 @@ public class MainActivity extends Activity implements MediaPlayerControl{
         controller.setMediaPlayer(this);
         controller.setAnchorView(findViewById(R.id.song_list));
         controller.setEnabled(true);
+
     }
 
 
