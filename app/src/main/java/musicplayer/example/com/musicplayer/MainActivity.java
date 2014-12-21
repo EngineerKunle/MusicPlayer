@@ -48,6 +48,7 @@ public class MainActivity extends Activity implements MediaPlayerControl{
 
     @Override
     public void pause() {
+        playbackPaused=true;
         musicSrv.pausePlayer();
     }
 
@@ -160,6 +161,11 @@ public class MainActivity extends Activity implements MediaPlayerControl{
     public void songPicked(View view){
         musicSrv.setSong(Integer.parseInt(view.getTag().toString()));
         musicSrv.playSong();
+        if(playbackPaused){
+            setController();
+            playbackPaused=false;
+        }
+        controller.show(0);
     }
 
     @Override

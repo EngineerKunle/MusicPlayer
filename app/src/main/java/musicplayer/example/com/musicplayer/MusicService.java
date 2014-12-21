@@ -120,7 +120,10 @@ public class MusicService extends Service implements
 
     @Override
     public void onCompletion(MediaPlayer mediaPlayer) {
-
+        if(player.getCurrentPosition()>0){
+            mediaPlayer.reset();
+            playNext();
+        }
     }
     @Override
     public void onPrepared(MediaPlayer mp) {
@@ -146,6 +149,7 @@ public class MusicService extends Service implements
 
     @Override
     public boolean onError(MediaPlayer mp, int i, int i2) {
+        mp.reset();
         return false;
     }
 
