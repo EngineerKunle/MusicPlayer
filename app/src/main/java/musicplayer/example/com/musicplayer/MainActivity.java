@@ -38,6 +38,9 @@ public class MainActivity extends Activity implements MediaPlayerControl{
     //mediacontroller
     private MusicController controller;
 
+    //activity and playback pause flags
+    private boolean paused=false, playbackPaused=false;
+
     @Override
     public void start() {
         musicSrv.go();
@@ -171,13 +174,14 @@ public class MainActivity extends Activity implements MediaPlayerControl{
         //menu item selected
         switch (item.getItemId()) {
             case R.id.action_shuffle:
-                //shuffle
+                musicSrv.setShuffle();
                 break;
             case R.id.action_end:
                 stopService(playIntent);
                 musicSrv=null;
                 System.exit(0);
                 break;
+
         }
         return super.onOptionsItemSelected(item);
     }
@@ -228,12 +232,51 @@ public class MainActivity extends Activity implements MediaPlayerControl{
 
     }
 
+    private void playNext(){
+        musicSrv.playNext();
+        if(playbackPaused){
+            setController();
+            playbackPaused=false;
+        }
+        controller.show(0);
+    }
+
+    private void playPrev(){
+        musicSrv.playPrev();
+        if(playbackPaused){
+            setController();
+            playbackPaused=false;
+        }
+        controller.show(0);
+    }
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        if(paused){
+            setController();
+            paused=false;
+        }
+    }
+
 
     @Override
     protected void onDestroy() {
         stopService(playIntent);
         musicSrv=null;
         super.onDestroy();
+    }
+
+    @Override
+    protected void onStop() {
+        controller.hide();
+        super.onStop();
     }
 
 }

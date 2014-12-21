@@ -1,6 +1,7 @@
 package musicplayer.example.com.musicplayer;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import android.content.ContentUris;
 import android.media.AudioManager;
@@ -13,6 +14,10 @@ import android.app.Service;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.IBinder;
+import android.app.Notification;
+import android.app.PendingIntent;
+
+
 
 /**
  * Created by Kunle on 14/12/2014.
@@ -30,6 +35,15 @@ public class MusicService extends Service implements
 
     private final IBinder musicBind = new MusicBinder();
 
+    //title of current song
+    private String songTitle="";
+    //notification id
+    private static final int NOTIFY_ID=1;
+    //shuffle flag and random
+    private boolean shuffle=false;
+    private Random rand;
+
+
     public void onCreate(){
         //create the service
         super.onCreate();
@@ -38,6 +52,8 @@ public class MusicService extends Service implements
         //create player
         player = new MediaPlayer();
         initMusicPlayer();
+        //random
+        rand=new Random();
     }
 
     public void initMusicPlayer(){
@@ -66,6 +82,8 @@ public class MusicService extends Service implements
         player.reset();
         //get song
         Song playSong = songs.get(songPosn);
+        //get title
+        songTitle=playSong.getTitle();
         //get id
         long currSong = playSong.getID();
         //set uri
@@ -108,6 +126,22 @@ public class MusicService extends Service implements
     public void onPrepared(MediaPlayer mp) {
         //start playback
         mp.start();
+        //notification
+        Intent notIntent = new Intent(this, MainActivity.class);
+        notIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        PendingIntent pendInt = PendingIntent.getActivity(this, 0,
+                notIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        Notification.Builder builder = new Notification.Builder(this);
+
+        builder.setContentIntent(pendInt)
+                .setSmallIcon(R.drawable.play)
+                .setTicker(songTitle)
+                .setOngoing(true)
+                .setContentTitle("Playing")
+                .setContentText(songTitle);
+        Notification not = builder.build();
+        startForeground(NOTIFY_ID, not);
     }
 
     @Override
@@ -148,11 +182,30 @@ public class MusicService extends Service implements
 
     //skip to next
     public void playNext(){
-        songPosn++;
-        if(songPosn>=songs.size()) songPosn=0;
+        if(shuffle){
+            int newSong = songPosn;
+            while(newSong==songPosn){
+                newSong=rand.nextInt(songs.size());
+            }
+            songPosn=newSong;
+        }
+        else{
+            songPosn++;
+            if(songPosn>=songs.size()) songPosn=0;
+        }
         playSong();
     }
 
+    @Override
+    public void onDestroy() {
+        stopForeground(true);
+    }
+
+    //toggle shuffle
+    public void setShuffle(){
+        if(shuffle) shuffle=false;
+        else shuffle=true;
+    }
 
 
 }
