@@ -40,17 +40,19 @@ public class MainActivity extends Activity implements MediaPlayerControl{
 
     @Override
     public void start() {
-
+        musicSrv.go();
     }
 
     @Override
     public void pause() {
-
+        musicSrv.pausePlayer();
     }
 
     @Override
     public int getDuration() {
-        return 0;
+        if(musicSrv!=null && musicBound && musicSrv.isPng())
+            return musicSrv.getPosn();
+        else return 0;
     }
 
     @Override
@@ -59,12 +61,15 @@ public class MainActivity extends Activity implements MediaPlayerControl{
     }
 
     @Override
-    public void seekTo(int i) {
+    public void seekTo(int pos) {
+        musicSrv.seek(pos);
 
     }
 
     @Override
     public boolean isPlaying() {
+        if(musicSrv!=null && musicBound)
+            return musicSrv.isPng();
         return false;
     }
 
@@ -75,17 +80,17 @@ public class MainActivity extends Activity implements MediaPlayerControl{
 
     @Override
     public boolean canPause() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean canSeekBackward() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean canSeekForward() {
-        return false;
+        return true;
     }
 
     @Override
