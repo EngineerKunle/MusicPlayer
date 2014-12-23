@@ -19,6 +19,7 @@ import android.content.ServiceConnection;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.MediaController.MediaPlayerControl;
+import android.app.ActionBar;
 
 import musicplayer.example.com.musicplayer.MusicService.MusicBinder;
 
@@ -106,6 +107,9 @@ public class MainActivity extends Activity implements MediaPlayerControl{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        // get the action bar
+//        ActionBar actionBar = getActionBar();
+//        actionBar.show();
 
         //retrieve list view
         songView = (ListView)findViewById(R.id.song_list);
