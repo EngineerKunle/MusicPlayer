@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.content.ContentResolver;
 import android.database.Cursor;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.widget.ListView;
 import android.os.IBinder;
@@ -19,12 +20,12 @@ import android.content.ServiceConnection;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.MediaController.MediaPlayerControl;
-import android.app.ActionBar;
+//import android.app.ActionBar;
 
 import musicplayer.example.com.musicplayer.MusicService.MusicBinder;
 
 
-public class MainActivity extends Activity implements MediaPlayerControl{
+public class MainActivity extends ActionBarActivity implements MediaPlayerControl{
 
     //song list variables
     private ArrayList<Song> songList;
@@ -108,8 +109,6 @@ public class MainActivity extends Activity implements MediaPlayerControl{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         // get the action bar
-//        ActionBar actionBar = getActionBar();
-//        actionBar.show();
 
         //retrieve list view
         songView = (ListView)findViewById(R.id.song_list);
