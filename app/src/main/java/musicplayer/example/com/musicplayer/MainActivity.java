@@ -11,6 +11,7 @@ import android.content.ContentResolver;
 import android.database.Cursor;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.widget.ListView;
 import android.os.IBinder;
 import android.content.ComponentName;
@@ -25,7 +26,7 @@ import android.widget.MediaController.MediaPlayerControl;
 import musicplayer.example.com.musicplayer.MusicService.MusicBinder;
 
 
-public class MainActivity extends ActionBarActivity implements MediaPlayerControl{
+public class MainActivity extends Activity implements MediaPlayerControl{
 
     //song list variables
     private ArrayList<Song> songList;
@@ -174,8 +175,13 @@ public class MainActivity extends ActionBarActivity implements MediaPlayerContro
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
+//        getMenuInflater().inflate(R.menu.main, menu);
+//        return true;
+
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main, menu);
+        return super.onCreateOptionsMenu(menu);
+
     }
 
     @Override
