@@ -26,7 +26,7 @@ import android.widget.MediaController.MediaPlayerControl;
 import musicplayer.example.com.musicplayer.MusicService.MusicBinder;
 
 
-public class MainActivity extends ActionBarActivity implements MediaPlayerControl{
+public class MainActivity extends Activity implements MediaPlayerControl{
 
     //song list variables
     private ArrayList<Song> songList;
